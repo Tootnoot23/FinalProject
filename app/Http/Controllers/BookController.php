@@ -57,10 +57,10 @@ class BookController extends Controller
     public function update($id, Request $request, Book $book)
     {
         Book::findOrFail($id)->update([
-            'Title' => $request->Title_book,
-            'Author' => $request->Author_book,
-            'Publisher' => $request->Publisher_book,
-            'Year' => $request->Year_book,
+            'Nama' => $request->Nama,
+            'Harga' => $request->Harga,
+            'Jumlah' => $request->Jumlah,
+            'category_id' => $request->category_id
         ]);
         $books = Book::all();
         return view('list', compact('books'));
@@ -73,6 +73,6 @@ class BookController extends Controller
     }
 
     public function store(Request $request) {
-        return $request->file('image')->store('post-image');
+        return $request->file('image')->store('post-images');
     }
 }
